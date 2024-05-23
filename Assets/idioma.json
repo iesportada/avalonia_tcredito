@@ -1,0 +1,32 @@
+[
+  {
+    "Id": "0",
+    "es": "Validación de tarjetas de crédito",
+    "en": "Credit cards validation"
+  },
+  {
+    "Id": "1",
+    "es": "Nº Tarjeta:",
+    "en": "Card #ID:"
+  },
+  {
+    "Id": "2",
+    "es": "Titular:",
+    "en": "Owner:"
+  },
+  {
+    "Id": "3",
+    "es": "Validar",
+    "en": "Validate"
+  },
+  {
+    "Id": "4",
+    "es": "Salir",
+    "en": "Exit"
+  },
+  {
+    "Id": "5",
+    "es": "Tarjeta no Válida",
+    "en": "Invalid credit Card"
+  }
+]

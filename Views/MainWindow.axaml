@@ -1,0 +1,99 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MVVM_TarjetaCredito.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="{Binding $self.Width}" d:DesignHeight="{Binding $self.Height}"
+        x:Class="MVVM_TarjetaCredito.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        x:Name="WinPrincipal"
+        xmlns:helpers="clr-namespace:MVVM_TarjetaCredito.Helpers"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Credit Card Validator"
+        Width="530" Height="370"
+        CanResize="False">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Window.Resources>
+        <helpers:ImageConverter x:Key="MiCreadordeImagenes"/>
+        <helpers:BoolRadioConverter x:Key="BoolBoolConverter"/>
+    </Window.Resources>
+    
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Idioma">
+                <MenuItem Header="Inglés" 
+                          Command="{Binding CmdIdioma}"
+                          CommandParameter="EN">
+                    
+                </MenuItem>
+                <MenuItem Header="Español"
+                          Command="{Binding CmdIdioma}"
+                          CommandParameter="ES">
+                
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <TextBlock Text="{Binding LabelTitulo}" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextAlignment="Center" Margin="10" Height="33" FontWeight="ExtraBold" Foreground="DarkRed" FontSize="24"/>
+            <TextBlock Margin="30,72" TextWrapping="Wrap" Text="{Binding LabelNumTarjeta}"/>
+            <TextBlock Margin="55,113" TextWrapping="Wrap" Text="{Binding LabelTitular}"/>
+            <TextBox x:Name="Tbx1" HorizontalAlignment="Left" Height="21" Margin="109,67,0,0" TextWrapping="Wrap" Text="{Binding T1}" VerticalAlignment="Top" Width="59" TabIndex="1" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="Tbx2" HorizontalAlignment="Left" Height="21" Margin="173,67,0,0" TextWrapping="Wrap" Text="{Binding T2}" VerticalAlignment="Top" Width="59" TabIndex="2" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="Tbx3" HorizontalAlignment="Left" Height="21" Margin="237,67,0,0" TextWrapping="Wrap" Text="{Binding T3}" VerticalAlignment="Top" Width="59" TabIndex="3" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="Tbx4" HorizontalAlignment="Left" Height="21" Margin="301,67,0,0" TextWrapping="Wrap" Text="{Binding T4}" VerticalAlignment="Top" Width="59" TabIndex="4" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="TbxTitular" Text="{Binding Titular}" HorizontalAlignment="Left" Width="255" Height="21" Margin="109,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  TabIndex="5"/>
+            <Button x:Name="BtnValidar" Content="{Binding LabelValidar}"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center" 
+                    Margin="395,85,0,0" 
+                    HorizontalAlignment="Left"
+                    Width="75" Height="48" TabIndex="6"
+                    Command="{Binding CmdValidar}" />
+            <Button x:Name="BtnSalir" Content="{Binding LabelSalir}" 
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Width="75" Height="48" TabIndex="6" 
+                    Margin="395,188,0,0" 
+                    Command="{Binding CmdSalir}" 
+                    CommandParameter="{Binding #WinPrincipal}"/>
+            <Canvas Margin="0,15,0,10">
+                <Image x:Name="ImgTarjeta" HorizontalAlignment="Left" 
+                       Height="156" Width="251" 
+                       Canvas.Left="107" Canvas.Top="130" 
+                       Source="{Binding RutaImagenTarjeta, Converter={StaticResource MiCreadordeImagenes}}"
+                       />
+                <StackPanel Canvas.Left= "140" Canvas.Top="215" >
+                    <StackPanel Orientation = "Horizontal" DataContext="MainWindow">
+                        <TextBlock Margin="2, 0" TextWrapping="Wrap" 
+                                   Text="{Binding #Tbx1.Text}" Foreground="White" FontWeight="Bold" />
+                        <TextBlock Margin="2, 0" TextWrapping="Wrap" 
+                                   Text="{Binding #Tbx2.Text}" Foreground="White" FontWeight="Bold" />
+                        <TextBlock Margin="2, 0" TextWrapping="Wrap" 
+                                   Text="{Binding #Tbx3.Text}" Foreground="White" FontWeight="Bold" />
+                        <TextBlock Margin="2, 0" TextWrapping="Wrap" 
+                                   Text="{Binding #Tbx4.Text}" Foreground="White" FontWeight="Bold" />
+                    </StackPanel>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" 
+                               Text="{Binding #TbxTitular.Text}" VerticalAlignment="Top" Foreground="White" />
+                </StackPanel>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Válida hasta" VerticalAlignment="Top" Foreground="White" Canvas.Left="231" Canvas.Top="161" Width="25" FontSize="8" />
+                <TextBlock x:Name="TblFecha" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding FechaValidez}" VerticalAlignment="Top" Foreground="White" Canvas.Left="261" Canvas.Top="161" FontSize="15" Height="23"/>
+                <RadioButton x:Name="RbtTipoVisa" Content="VISA" Canvas.Left="385" Canvas.Top="55" GroupName="tarjetas" IsChecked="{Binding TipoTarjeta}"/>
+                <RadioButton x:Name="RbtTipoMastercard" Content="MasterCard" Canvas.Left="385" Canvas.Top="80" GroupName="tarjetas" IsChecked="{Binding TipoTarjeta, Converter={StaticResource BoolBoolConverter}}"/>
+                <TextBlock x:Name="TbxNoValida" Canvas.Left="140" Canvas.Top="190" FontSize="20" 
+                           Text="{Binding LabelTarjetaNoValida}" 
+                           Foreground="Yellow"
+                           IsVisible="{Binding TarjetaNoValida}">
+                    <TextBlock.RenderTransform>
+                        <RotateTransform Angle="-25"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                <Label Content="{Binding LblEstado}" Canvas.Top = "300" FontSize="10" />
+            </Canvas>
+        </Grid>
+    </StackPanel>
+</Window>
