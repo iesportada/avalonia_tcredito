@@ -27,12 +27,10 @@
                 <MenuItem Header="Inglés" 
                           Command="{Binding CmdIdioma}"
                           CommandParameter="EN">
-                    
                 </MenuItem>
                 <MenuItem Header="Español"
                           Command="{Binding CmdIdioma}"
                           CommandParameter="ES">
-                
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -64,8 +62,7 @@
                 <Image x:Name="ImgTarjeta" HorizontalAlignment="Left" 
                        Height="156" Width="251" 
                        Canvas.Left="107" Canvas.Top="130" 
-                       Source="{Binding RutaImagenTarjeta, Converter={StaticResource MiCreadordeImagenes}}"
-                       />
+                       Source="{Binding RutaImagenTarjeta, Converter={StaticResource MiCreadordeImagenes}}" />
                 <StackPanel Canvas.Left= "140" Canvas.Top="215" >
                     <StackPanel Orientation = "Horizontal" DataContext="MainWindow">
                         <TextBlock Margin="2, 0" TextWrapping="Wrap" 

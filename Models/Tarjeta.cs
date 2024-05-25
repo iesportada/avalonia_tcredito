@@ -24,16 +24,20 @@ namespace MVVM_TarjetaCredito.Models
             // 1.Tomemos un número de tarjeta de crédito del cual queramos verificar su validez
             // 2.Separemos los números de las posiciones impares: (x = posición impar)
 
-            int suma = 0;
+            int suma = 0, digito;
+            
             for (int i = 0; i < _numero.Length; i++)
             {
+                if (!int.TryParse(_numero[i].ToString(), out digito))
+                    return false;
+
                 if (i % 2 == 0)
                 {
-                    suma += int.Parse(_numero[i].ToString());
+                    suma += digito;
                 }
                 else
                 {
-                    var aux = int.Parse(_numero[i].ToString()) * 2;
+                    var aux = digito * 2;
                     suma += (aux > 9) ?  aux - 9: aux;
                 }
             }
