@@ -26,4 +26,12 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaXaml Remove="Views\MainWindow.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Views\MainWindow.axaml.cs" />
+    </ItemGroup>
 </Project>

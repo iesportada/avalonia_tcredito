@@ -31,15 +31,13 @@ namespace MVVM_TarjetaCredito.Models
                 if (!int.TryParse(_numero[i].ToString(), out digito))
                     return false;
 
-                if (i % 2 == 0)
-                {
-                    suma += digito;
-                }
-                else
+                if (i % 2 == 0) // tratamiento de cifras impares que ocupan posiciones pares del string
                 {
                     var aux = digito * 2;
                     suma += (aux > 9) ?  aux - 9: aux;
                 }
+                else 
+                    suma += digito;
             }
             // 5. Si el resultado anterior es múltiplo de 10 , entonces es válido.
             return suma % 10 == 0;

@@ -43,8 +43,11 @@ public sealed partial class MainWindowViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(LabelSalir));
         OnPropertyChanged(nameof(LabelValidar));
         OnPropertyChanged(nameof(LabelTarjetaNoValida));
+        OnPropertyChanged((nameof(EnEspanol)));
     }
 
+    public bool EnEspanol => _idioma == "ES";
+    
     private string? LabelGenerica(int id)
     {
         string? salida = String.Empty;

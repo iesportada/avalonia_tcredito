@@ -25,12 +25,14 @@
         <Menu>
             <MenuItem Header="Idioma">
                 <MenuItem Header="Inglés" 
-                          Command="{Binding CmdIdioma}"
-                          CommandParameter="EN">
+						IsChecked="false" 
+                    	Command="{Binding CmdIdioma}"
+                      	CommandParameter="EN">
                 </MenuItem>
                 <MenuItem Header="Español"
-                          Command="{Binding CmdIdioma}"
-                          CommandParameter="ES">
+						IsChecked="true"
+                        Command="{Binding CmdIdioma}"
+                        CommandParameter="ES">
                 </MenuItem>
             </MenuItem>
         </Menu>
@@ -57,7 +59,7 @@
                     Width="75" Height="48" TabIndex="6" 
                     Margin="395,188,0,0" 
                     Command="{Binding CmdSalir}" 
-                    CommandParameter="{Binding #WinPrincipal}"/>
+                    CommandParameter="{Binding $parent[Window]}"/>
             <Canvas Margin="0,15,0,10">
                 <Image x:Name="ImgTarjeta" HorizontalAlignment="Left" 
                        Height="156" Width="251" 
