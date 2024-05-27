@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using Avalonia.Controls;
 using MVVM_TarjetaCredito.Models;
 using Newtonsoft.Json;
@@ -15,7 +13,7 @@ public struct EstructIdioma
     public string? ES;
     public string? EN;
 }
-public sealed partial class MainWindowViewModel : INotifyPropertyChanged
+public sealed class MainWindowViewModel : ViewModelBase
 {
     string _t1 = "4857";
     string _t2 = "6961";
@@ -63,7 +61,7 @@ public sealed partial class MainWindowViewModel : INotifyPropertyChanged
             case "ES": 
                 salida =  _cadenas![id].ES;
                 break;
-        };
+        }
         return salida;    
     }
 
@@ -196,7 +194,7 @@ public sealed partial class MainWindowViewModel : INotifyPropertyChanged
         }
     }
 
-    private string _lblEstado = "vacio";
+    private string _lblEstado = "Idioma seleccionado: ES";
     public string LblEstado
     {
         get => _lblEstado;
@@ -222,12 +220,5 @@ public sealed partial class MainWindowViewModel : INotifyPropertyChanged
     public void CmdValidar()
     {
         TarjetaNoValida = !_tarjeta.EsValida();
-    }
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    
-    private void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
