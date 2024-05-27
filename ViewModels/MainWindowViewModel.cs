@@ -44,6 +44,10 @@ public sealed partial class MainWindowViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(LabelValidar));
         OnPropertyChanged(nameof(LabelTarjetaNoValida));
         OnPropertyChanged((nameof(EnEspanol)));
+        OnPropertyChanged(nameof(LabelTituloVentana));
+        OnPropertyChanged(nameof(LabelMenuIdioma));
+        OnPropertyChanged(nameof(LabelMenuIdiomaEspanol));
+        OnPropertyChanged(nameof(LabelMenuIdiomaIngles));
     }
 
     public bool EnEspanol => _idioma == "ES";
@@ -69,6 +73,10 @@ public sealed partial class MainWindowViewModel : INotifyPropertyChanged
     public string? LabelValidar => LabelGenerica(3);
     public string? LabelSalir => LabelGenerica(4);
     public string? LabelTarjetaNoValida => LabelGenerica(5);
+    public string? LabelMenuIdioma => LabelGenerica(6);
+    public string? LabelMenuIdiomaIngles => LabelGenerica(7);
+    public string? LabelMenuIdiomaEspanol => LabelGenerica(8);
+    public string? LabelTituloVentana => LabelGenerica(9);
 
     public string Titular
     {

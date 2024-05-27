@@ -7,7 +7,7 @@
         xmlns:helpers="clr-namespace:MVVM_TarjetaCredito.Helpers"
         xmlns:viewModels="clr-namespace:MVVM_TarjetaCredito.ViewModels"
         x:DataType="viewModels:MainWindowViewModel"
-        Title="Credit Card Validator"
+        Title="{Binding LabelTituloVentana}"
         Width="530" Height="350"
         CanResize="False">
     <Window.Resources>
@@ -18,15 +18,15 @@
     </Window.DataContext>
     <StackPanel>
         <Menu>
-            <MenuItem Header="Idioma">
-                <MenuItem Header="Inglés" 
+            <MenuItem Header="{Binding LabelMenuIdioma}">
+                <MenuItem Header="{Binding LabelMenuIdiomaIngles}" 
                           Command="{Binding CmdIdioma}"
                           CommandParameter="EN">
                     <MenuItem.Icon>
                         <CheckBox BorderThickness="0" IsChecked="{Binding !EnEspanol}"></CheckBox>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Español"
+                <MenuItem Header="{Binding LabelMenuIdiomaEspanol}"
                           Command="{Binding CmdIdioma}"
                           CommandParameter="ES">
                     <MenuItem.Icon>

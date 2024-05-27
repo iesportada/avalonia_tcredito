@@ -28,5 +28,25 @@
     "Id": "5",
     "es": "Tarjeta no Válida",
     "en": "Invalid credit Card"
+  },
+  {
+    "Id": "6",
+    "es": "Idioma",
+    "en": "Language"
+  },
+  {
+    "Id": "7",
+    "es": "Inglés",
+    "en": "English"
+  },
+  {
+    "Id": "8",
+    "es": "Español",
+    "en": "Spanish"
+  },
+  {
+    "Id": "9",
+    "es": "Validador de Tarjetas de Crédito",
+    "en": "Credit Cards Validator"
   }
 ]
